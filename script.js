@@ -1,19 +1,31 @@
-function showInformationOfUsers(){
+const users = [];
+
+function renderUsertoScreen(newUser){
     const cardUser = document.querySelectorAll('.card-user');
+
+    users.push(newUser);
     
-    const users = [
-        {name: 'Davi', age: 18, gender: 'Masculino'},
-        {name: 'Renata', age: 30, gender: 'Feminino'}, 
-        {name: 'Anderson', age: 42, gender: 'Masculino'}];
-    
-            for(i = 0; i <= users.length - 1;i++){
+            for(let i = 0; i <= users.length - 1;i++){
                 const {name, age, gender} = users[i];
                 cardUser[i].innerHTML = `${name} ${age} ${gender}`;
-            
                 
+
             }
 };
-showInformationOfUsers();
+
+function createUser(name, age, gender){
+    return{
+        name: name,
+        age: age,
+        gender: gender
+
+    }
+}
+
+renderUsertoScreen(createUser('Davi', 18, 'Masculino'));
+renderUsertoScreen(createUser('Renata', 30, 'Feminino'));
+renderUsertoScreen(createUser('Anderson', 42, 'Masculino'));
+
 
 
         
