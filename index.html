@@ -6,6 +6,17 @@
     <title></title>
 </head>
 <body>
+    <div class="layout-form">
+        <form action="" class="form">
+            <label for="">Nome:</label>
+            <input type="text" placeholder="name" id="name">
+            <label for="">Idade:</label>
+            <input type="number" placeholder="age" id="age">
+            <label for="">Sexo:</label>
+            <input type="text" placeholder="gender" id="gender">
+            <input type="submit">
+        </form>
+    </div>
     <div class="container-card-user">
         <div class="container-info-users">
             <img src="" alt="" class="img-user">
@@ -29,10 +40,20 @@
             gap: 10px;
         }
         .container-info-users{
-            height: 50px;
             width: 200px;
             border: 2px solid black;
         }
+        .layout-form form{
+            display: flex;
+            flex-flow: column nowrap;
+            width: 200px;
+        }
+        .layout-form form input{
+            padding: 10px;
+            margin-bottom: 5px;
+        }
+
+
     </style>
 
     <script src="script.js"></script>
