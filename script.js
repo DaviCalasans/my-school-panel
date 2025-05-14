@@ -1,6 +1,8 @@
 function myEscope(){
     const users = [];
     const form = document.querySelector('.form')
+    const layoutForm = document.querySelector('.layout-form');
+    
 
     function getFormValues(event){
         event.preventDefault();
@@ -14,7 +16,8 @@ function myEscope(){
         
         const newUser = createUser(nameValue,ageValue,genderValue);
         createCard();
-        renderUsertoScreen(newUser)
+        renderUsertoScreen(newUser);
+        layoutForm.style.display = 'none';
 
         form.reset();
 
@@ -46,15 +49,23 @@ function myEscope(){
                     cardUser[i].innerHTML = `<p>${name}</p> <p>${age}</p> <p>${gender}</p>`;
                 }
     };
+
+    window.showForm = function(){
+        const display = window.getComputedStyle(layoutForm).display;
+        
+        if(display !== 'none'){
+            layoutForm.style.display = 'none';
+        }else{
+            layoutForm.style.display = 'block';
+        }
+    };
     
 
 
     form.addEventListener('submit',getFormValues)
     console.log(users)
     
-    
 }
-
 myEscope();
 
 
