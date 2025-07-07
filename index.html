@@ -10,20 +10,43 @@
     <div class="btns">
         <input type="submit" value="Criar aluno" onclick="showForm()">
     </div>
+    
     <div class="layout-form">
         <form action="" class="form">
-            <label for="">Name:</label>
-            <input type="text" placeholder="name" id="name">
-            <label for="">Age:</label>
-            <input type="number" placeholder="age" id="age">
-            <label for="">Gender:</label>
-            <label for="male"><input type="radio" name="gender" value="M" id="male">Male</label>
-            <label for="female"><input type="radio" name="gender" value="F" id="female">Female</label>
+            <label for="name">Nome:</label>
+            <input type="text" placeholder="name" id="name" maxlength="60" pattern="^[A-Za-zÀ-ÿ\s]+$" title="Digite apenas letras">
+ 
+            <label for="age">Idade:</label>
+            <input type="date" placeholder="age" id="age" max="2024-12-31">
+
+            <label for="matricula">Matrícula:</label>
+            <div class="input-matricula">
+                <input type="text" value="0000" id="four-zero" disabled>
+                <input type="text" placeholder="Matrícula" id="matricula" pattern="[0-9]{6}" title="Digite apenas números (ex: 123456)" maxlength="6">
+            </div>
+
+            <label for="serie">Série:</label>
+            <select name="serie" id="series" value="">
+                <option value="1º Série EM" disabled selected>Selecione uma série</option>
+                <option value="1º Série EM">1º Série EM</option>
+                <option value="2º Série EM">2º Série EM</option>
+                <option value="3º Série EM">3º Série EM</option>
+            </select>
+
+            <label for="">Gênero:</label>
+            <img src="" alt="">
+            <label for="male">
+            <input type="radio" name="gender" value="Masculino" id="male">Masculino</label>
+            <label for="female">    
+            <input type="radio" name="gender" value="Feminino" id="female">Feminino</label>
             <input type="submit">
+
         </form>
     </div>
+    
     <div class="container-card-user">
     </div>
+
     <style>
         .container-card-user{
             display: flex;
