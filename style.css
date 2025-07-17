@@ -18,3 +18,8 @@
 #male-icon, #female-icon{
     width: 15px;
 }
+
+#name-feedback{
+    color: red;
+    font-size: 0.9em;
+}
