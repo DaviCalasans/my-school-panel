@@ -2,7 +2,6 @@ function myEscope(){
     const users = [];
     const form = document.querySelector('.form')
     const layoutForm = document.querySelector('.layout-form');
-    
 
     function getFormValues(event){
         event.preventDefault();
@@ -13,18 +12,14 @@ function myEscope(){
         const serie = form.querySelector("#series");
         
         let nameValue = name.value;
-        let formatAgeValue = age.value; //Pega o valor da idade passado no input
+        let formatAgeValue = age.value; 
         let genderValue = getIconGender(gender.value);
-        console.log(genderValue)
-        let ageValue = formatData(formatAgeValue); //Formata a data para o dd//mm/aaaa
-        let registrationValue = parseInt(registration.value); //Pega o valor da matrícula e transforma em tipo number
+        let ageValue = formatData(formatAgeValue); 
+        let registrationValue = parseInt(registration.value); 
         let serieValue = serie.value;
-        console.log(ageValue, serieValue);
 
         const newUser = createUser(nameValue,ageValue,genderValue,registrationValue, serieValue);
-        createCard();
         renderUsertoScreen(newUser);
-        console.log(typeof ageValue, ageValue);
         layoutForm.style.display = 'none';
 
         form.reset();
@@ -45,26 +40,26 @@ function myEscope(){
         }
     }
 
-    //Função para formatar data e calcular a idade do usuário
+    
     function formatData(formatAgeValue){
-        const [ano, mes, dia] = formatAgeValue.split('-'); //Desestruturção da string data
-        const dateBorn = new Date(ano, mes - 1, dia); //Criação de data com os valores desestruturados
-        const somentedate = dateBorn.toLocaleDateString() //Formata a data de nascimento para mostrar somente a data no formato dd/mm/aaaa
-        const currentDate = new Date().toLocaleDateString(); //Pega a data atual em formato de dd/mm/aaaa
+        const [ano, mes, dia] = formatAgeValue.split('-'); 
+        const dateBorn = new Date(ano, mes - 1, dia); 
+        const somentedate = dateBorn.toLocaleDateString() 
+        const currentDate = new Date().toLocaleDateString(); 
         const parts = currentDate.split('/'); 
-        const currentYear = parts[2];//Pega a última parte (ano) da string data
+        const currentYear = parts[2];
 
-        const currentAge = currentYear - ano; //Faz o cálculo para encontrar a idade do usuário
+        const currentAge = currentYear - ano; 
 
-        //Retorna um objeto com data de nascimento e idade do usuário
         return {
             dataNascimento: somentedate,
             idade: currentAge
         }
     };
     
-    //Agora a factory recebe um objeto na idade (data de nascimento e idade)
+    
     function createUser(name, ageObj, genderObj, registrationValue, serieValue){
+        createCard();
         return{
             name: name,
             dateBorn: ageObj.dataNascimento,
@@ -89,7 +84,7 @@ function myEscope(){
         users.push(newUser);
         
                 for(let i = 0; i <= users.length - 1;i++){
-                    const {name, dateBorn, age, textGender,iconGender, registrationValue, serieValue} = users[i]; // Desestrutura com a data de nascimento
+                    const {name, dateBorn, age, textGender,iconGender, registrationValue, serieValue} = users[i]; 
                     cardUser[i].innerHTML = `
                     <p>${name}</p>
                     <p>${dateBorn} (${age} anos)</p> 
@@ -112,18 +107,15 @@ function myEscope(){
     };
 
     window.deleteUser = function(index) {
-        users.splice(index, 1); // Remove user from array
+        users.splice(index, 1); 
 
-        // Clear all cards
         const containerCard = document.querySelector('.container-card-user');
         containerCard.innerHTML = '';
 
-        // Re-create cards for remaining users
         for (let i = 0; i < users.length; i++) {
             createCard();
         }
 
-        // Re-render user info in each card
         const cardUser = document.querySelectorAll('.card-user');
         for (let i = 0; i < users.length; i++) {
             const { name, age, gender } = users[i];

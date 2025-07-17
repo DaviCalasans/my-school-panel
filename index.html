@@ -12,22 +12,42 @@
     </div>
     
     <div class="layout-form">
-        <form action="" class="form">
-            <label for="name">Nome:</label>
-            <input type="text" placeholder="name" id="name" maxlength="60" pattern="^[A-Za-zÀ-ÿ\s]+$" title="Digite apenas letras">
+        <form action="" class="form" autocomplete="off">
+            <label for="name">Nome completo:</label>
+            <input 
+            type="text" 
+            placeholder="Ex: NEYMAR DA SILVA SANTOS" 
+            id="name" 
+            minlength="5" maxlength="60" 
+            pattern="^[A-Za-zÀ-ÿ\s]+$" 
+            title="Digite apenas letras" 
+            required>
+            <div id="name-feedback"></div>
  
             <label for="age">Idade:</label>
-            <input type="date" placeholder="age" id="age" max="2024-12-31">
+            <input type="date" 
+            placeholder="Ex: 05/02/1994" 
+            id="age" 
+            max="2024-12-31" 
+            required>
 
             <label for="matricula">Matrícula:</label>
             <div class="input-matricula">
-                <input type="text" value="0000" id="four-zero" disabled>
-                <input type="text" placeholder="Matrícula" id="matricula" pattern="[0-9]{6}" title="Digite apenas números (ex: 123456)" maxlength="6">
+                <input type="text" 
+                value="0000" 
+                id="four-zero" 
+                disabled>
+                <input type="text" 
+                placeholder="Ex: 123456" 
+                id="matricula" pattern="[0-9]{6}" 
+                title="Digite apenas números (ex: 123456)" 
+                maxlength="6" 
+                required>
             </div>
 
             <label for="serie">Série:</label>
-            <select name="serie" id="series" value="">
-                <option value="1º Série EM" disabled selected>Selecione uma série</option>
+            <select name="serie" id="series" required>
+                <option value="" disabled selected>Selecione uma série</option>
                 <option value="1º Série EM">1º Série EM</option>
                 <option value="2º Série EM">2º Série EM</option>
                 <option value="3º Série EM">3º Série EM</option>
@@ -36,9 +56,17 @@
             <label for="">Gênero:</label>
             <img src="" alt="">
             <label for="male">
-            <input type="radio" name="gender" value="Masculino" id="male">Masculino</label>
+            <input type="radio" 
+            name="gender" 
+            value="Masculino" 
+            id="male" 
+            required>Masculino</label>
+
             <label for="female">    
-            <input type="radio" name="gender" value="Feminino" id="female">Feminino</label>
+            <input type="radio" 
+            name="gender" 
+            value="Feminino" 
+            id="female">Feminino</label>
             <input type="submit">
 
         </form>
@@ -70,6 +98,7 @@
 
     </style>
 
-    <script src="script.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/validation.js"></script>
 </body>
 </html>
