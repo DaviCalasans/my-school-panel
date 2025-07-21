@@ -41,21 +41,32 @@ function myEscope(){
     }
 
     
-    function formatData(formatAgeValue){
-        const [ano, mes, dia] = formatAgeValue.split('-'); 
-        const dateBorn = new Date(ano, mes - 1, dia); 
-        const somentedate = dateBorn.toLocaleDateString() 
-        const currentDate = new Date().toLocaleDateString(); 
-        const parts = currentDate.split('/'); 
-        const currentYear = parts[2];
+    function formatData(formatAgeValue) {
+      const [ano, mes, dia] = formatAgeValue.split('-'); 
+      const nascimento = new Date(ano, mes - 1, dia); // mês começa do 0
+      const hoje = new Date();
 
-        const currentAge = currentYear - ano; 
+      // Calcula idade com base no mês e dia
+      let idade = hoje.getFullYear() - nascimento.getFullYear();
+      const mesAtual = hoje.getMonth();
+      const diaAtual = hoje.getDate();
 
-        return {
-            dataNascimento: somentedate,
-            idade: currentAge
-        }
-    };
+      if (
+        mesAtual < nascimento.getMonth() ||
+        (mesAtual === nascimento.getMonth() && diaAtual < nascimento.getDate())
+      ) {
+        idade--;
+      }
+
+      // Formata para DD/MM/AAAA
+      const dataFormatada = nascimento.toLocaleDateString('pt-BR');
+
+      return {
+        dataNascimento: dataFormatada,
+        idade: idade
+      };
+    }
+
     
     
     function createUser(name, ageObj, genderObj, registrationValue, serieValue){
