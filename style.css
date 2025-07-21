@@ -19,7 +19,7 @@
     width: 15px;
 }
 
-#name-feedback{
+#name-feedback, #matricula-feedback{
     color: red;
     font-size: 0.9em;
 }
