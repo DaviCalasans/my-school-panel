@@ -120,15 +120,18 @@ document.querySelector('#age').addEventListener('blur', function(e){
 
 document.querySelector('#series').addEventListener('blur', function(e){
     const optionsSelect = ['1º Série EM', '2º Série EM', '3º Série EM']
+    const feedback = document.querySelector('#select-feedback');
     const input = e.target;
 
     //Se o valor estiver vazio ou diferente de uma das opções mostra um erro
     if(!optionsSelect.includes(e.target.value)){
-        input.style.border = '2px solid red'
+        input.style.border = '2px solid red';
+        feedback.textContent = 'Selecione uma das opções do campo'
         return
     }
 
     //Limpa as bordas se estiver tudo certo
     input.style.border = '';
+    feedback.textContent = '';
 
 })
