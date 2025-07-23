@@ -5,25 +5,34 @@ function myEscope(){
 
     function getFormValues(event){
         event.preventDefault();
-        const name = form.querySelector('#name');
-        const age = form.querySelector('#age');
+        const nameValue = form.querySelector('#name').value;
+        const ageValue = form.querySelector('#age').value;
         const gender = form.querySelector('input[name="gender"]:checked');
         const registration = form.querySelector('#matricula');
-        const serie = form.querySelector("#series");
+        const serieValue = form.querySelector("#series").value;
         
-        let nameValue = name.value;
-        let formatAgeValue = age.value; 
-        let genderValue = getIconGender(gender.value);
-        let ageValue = formatData(formatAgeValue); 
-        let registrationValue = parseInt(registration.value); 
-        let serieValue = serie.value;
+        const genderValue = getIconGender(gender.value);
+        const formatAgeValue = formatData(ageValue); 
+        const registrationValue = parseInt(registration.value); 
 
-        const newUser = createUser(nameValue,ageValue,genderValue,registrationValue, serieValue);
-        renderUsertoScreen(newUser);
+        const newUser = createUser(nameValue,formatAgeValue,genderValue,registrationValue, serieValue);
+        putUserInArray(newUser);
         layoutForm.style.display = 'none';
 
         form.reset();
 
+    }
+
+    function putUserInArray(newUser){
+        users.push(newUser);
+        toStringfy(users)
+        console.table(users)
+
+    }
+    
+    function toStringfy(users){
+        const jeison = JSON.stringify(users)
+        console.log(jeison)
     }
 
     function getIconGender(genderValue){
