@@ -1,3 +1,22 @@
+.container-card-user{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.container-info-users{
+    width: 200px;
+    border: 2px solid black;
+}
+.layout-form form{
+    display: flex;
+    flex-flow: column nowrap;
+    width: 200px;
+}
+.layout-form form input{
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
 .layout-form{
     display: none;
     position: absolute;
