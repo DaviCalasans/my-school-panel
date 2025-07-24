@@ -1,5 +1,5 @@
 function myEscope(){
-    const users = [];
+    let users = getUsersFromStorage();
     const form = document.querySelector('.form')
     const layoutForm = document.querySelector('.layout-form');
 
@@ -16,23 +16,34 @@ function myEscope(){
         const registrationValue = parseInt(registration.value); 
 
         const newUser = createUser(nameValue,formatAgeValue,genderValue,registrationValue, serieValue);
-        putUserInArray(newUser);
+        addUserInArray(newUser);
         layoutForm.style.display = 'none';
+
+        const usuariosSalvos = getUsersFromStorage();
+        console.log(usuariosSalvos);
 
         form.reset();
 
     }
-
-    function putUserInArray(newUser){
+    //ADICIONA O OBJETO newUser AO ARRAY users (Alterei o nome da função para addUserInArray)
+    function addUserInArray(newUser){
         users.push(newUser);
         toStringfy(users)
-        console.table(users)
 
     }
-    
+    //TRANSFORMA O ARRAY users EM Stringfy
     function toStringfy(users){
-        const jeison = JSON.stringify(users)
-        console.log(jeison)
+        const usersStr = JSON.stringify(users)
+        addUserInStorage(usersStr)
+    }
+    //ADICIONA O ARRAY users AO LOCALSTORAGE
+    function addUserInStorage(usersStr){
+        localStorage.setItem('usuarios', usersStr);
+    }
+
+    function getUsersFromStorage(){
+        const UsersStr = localStorage.getItem('usuarios');
+        return UsersStr ? JSON.parse(UsersStr) : []; 
     }
 
     function getIconGender(genderValue){
