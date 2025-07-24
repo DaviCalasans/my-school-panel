@@ -1,29 +1,49 @@
 function myEscope(){
-    const users = [];
+    let users = getUsersFromStorage();
     const form = document.querySelector('.form')
     const layoutForm = document.querySelector('.layout-form');
 
     function getFormValues(event){
         event.preventDefault();
-        const name = form.querySelector('#name');
-        const age = form.querySelector('#age');
+        const nameValue = form.querySelector('#name').value;
+        const ageValue = form.querySelector('#age').value;
         const gender = form.querySelector('input[name="gender"]:checked');
         const registration = form.querySelector('#matricula');
-        const serie = form.querySelector("#series");
+        const serieValue = form.querySelector("#series").value;
         
-        let nameValue = name.value;
-        let formatAgeValue = age.value; 
-        let genderValue = getIconGender(gender.value);
-        let ageValue = formatData(formatAgeValue); 
-        let registrationValue = parseInt(registration.value); 
-        let serieValue = serie.value;
+        const genderValue = getIconGender(gender.value);
+        const formatAgeValue = formatData(ageValue); 
+        const registrationValue = parseInt(registration.value); 
 
-        const newUser = createUser(nameValue,ageValue,genderValue,registrationValue, serieValue);
-        renderUsertoScreen(newUser);
+        const newUser = createUser(nameValue,formatAgeValue,genderValue,registrationValue, serieValue);
+        addUserInArray(newUser);
         layoutForm.style.display = 'none';
+
+        const usuariosSalvos = getUsersFromStorage();
+        console.log(usuariosSalvos);
 
         form.reset();
 
+    }
+    //ADICIONA O OBJETO newUser AO ARRAY users (Alterei o nome da função para addUserInArray)
+    function addUserInArray(newUser){
+        users.push(newUser);
+        toStringfy(users)
+
+    }
+    //TRANSFORMA O ARRAY users EM Stringfy
+    function toStringfy(users){
+        const usersStr = JSON.stringify(users)
+        addUserInStorage(usersStr)
+    }
+    //ADICIONA O ARRAY users AO LOCALSTORAGE
+    function addUserInStorage(usersStr){
+        localStorage.setItem('usuarios', usersStr);
+    }
+
+    function getUsersFromStorage(){
+        const UsersStr = localStorage.getItem('usuarios');
+        return UsersStr ? JSON.parse(UsersStr) : []; 
     }
 
     function getIconGender(genderValue){

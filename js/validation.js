@@ -50,7 +50,6 @@ document.querySelector('#name').addEventListener('blur', function(e){
     }
 
     let splitName = e.target.value.split(' ');
-    console.log(splitName);
 
     if(e.target.value.length < 3){
         feedback.style.color = 'blue';
