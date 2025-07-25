@@ -28,7 +28,7 @@ function verificaFeedback() {
 document.querySelector('#name').addEventListener('input', function(e){
     e.target.value = e.target.value.toUpperCase();
 
-    e.target.value = e.target.value.replace(/[^a-zA-Z]/g, ' '); //Remove qualquer caractere que não for string
+    e.target.value = e.target.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, ''); //Remove qualquer caractere que não for string
 
 })
 

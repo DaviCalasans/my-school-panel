@@ -2,6 +2,8 @@ function myEscope(){
     let users = getUsersFromStorage();
     const form = document.querySelector('.form')
     const layoutForm = document.querySelector('.layout-form');
+    console.log(users);
+    renderUsertoScreen(users);
 
     function getFormValues(event){
         event.preventDefault();
@@ -16,17 +18,15 @@ function myEscope(){
         const registrationValue = parseInt(registration.value); 
 
         const newUser = createUser(nameValue,formatAgeValue,genderValue,registrationValue, serieValue);
-        addUserInArray(newUser);
+        addUserAndSave(newUser);
+        renderUsertoScreen(users);
         layoutForm.style.display = 'none';
-
-        const usuariosSalvos = getUsersFromStorage();
-        console.log(usuariosSalvos);
-
         form.reset();
 
     }
-    //ADICIONA O OBJETO newUser AO ARRAY users (Alterei o nome da função para addUserInArray)
-    function addUserInArray(newUser){
+
+    //ADICIONA O OBJETO newUser AO ARRAY users (Alterei o nome da função para addUserAndSave)
+    function addUserAndSave(newUser){
         users.push(newUser);
         toStringfy(users)
 
@@ -40,7 +40,7 @@ function myEscope(){
     function addUserInStorage(usersStr){
         localStorage.setItem('usuarios', usersStr);
     }
-
+    //PEGA OS DADOS E TRANSFORMA A STRING EM ARRAY
     function getUsersFromStorage(){
         const UsersStr = localStorage.getItem('usuarios');
         return UsersStr ? JSON.parse(UsersStr) : []; 
@@ -90,7 +90,6 @@ function myEscope(){
     
     
     function createUser(name, ageObj, genderObj, registrationValue, serieValue){
-        createCard();
         return{
             name: name,
             dateBorn: ageObj.dataNascimento,
@@ -109,22 +108,27 @@ function myEscope(){
         containerCard.appendChild(cardUserlayout);
     }
     
-    function renderUsertoScreen(newUser){
+    function renderUsertoScreen(usuariosSalvos){
+        const containerCard = document.querySelector('.container-card-user');
+        containerCard.innerHTML = ''; // Limpa os cards antigos
+
+        // Cria um card para cada usuário salvo
+        for(let i = 0; i < usuariosSalvos.length; i++){
+            createCard();
+        }
+
         const cardUser = document.querySelectorAll('.card-user');
-        console.log(users)
-        users.push(newUser);
-        
-                for(let i = 0; i <= users.length - 1;i++){
-                    const {name, dateBorn, age, textGender,iconGender, registrationValue, serieValue} = users[i]; 
-                    cardUser[i].innerHTML = `
-                    <p>${name}</p>
-                    <p>${dateBorn} (${age} anos)</p> 
-                    <p>Matrícula: 0000${registrationValue}</p> 
-                    <p>${serieValue}</p> 
-                    <p>${textGender} <img src="${iconGender}" id="male-icon"></p>
-                    <button onClick="deleteUser(${i})">Deletar</button>
-                    `;
-                }
+        for(let i = 0; i < usuariosSalvos.length; i++){
+            const {name, dateBorn, age, textGender,iconGender, registrationValue, serieValue} = usuariosSalvos[i]; 
+            cardUser[i].innerHTML = `
+                <p>${name}</p>
+                <p>${dateBorn} (${age} anos)</p> 
+                <p>Matrícula: 0000${registrationValue}</p> 
+                <p>${serieValue}</p> 
+                <p>${textGender} <img src="${iconGender}" id="male-icon"></p>
+                <button onClick="deleteUser(${i})">Deletar</button>
+            `;
+        }
     };
 
     window.showForm = function(){
