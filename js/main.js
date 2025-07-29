@@ -143,24 +143,8 @@ function myEscope(){
 
     window.deleteUser = function(index) {
         users.splice(index, 1); 
-
-        const containerCard = document.querySelector('.container-card-user');
-        containerCard.innerHTML = '';
-
-        for (let i = 0; i < users.length; i++) {
-            createCard();
-        }
-
-        const cardUser = document.querySelectorAll('.card-user');
-        for (let i = 0; i < users.length; i++) {
-            const { name, age, gender } = users[i];
-            cardUser[i].innerHTML = `
-                <p>${name}</p>
-                <p>${age}</p>
-                <p>${gender}</p>
-                <button onClick="deleteUser(${i})">Deletar</button>
-            `;
-        }
+        toStringfy(users)
+        renderUsertoScreen(users);
     }
 
     
