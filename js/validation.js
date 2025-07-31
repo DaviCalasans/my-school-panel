@@ -1,3 +1,5 @@
+import { getUsersFromStorage } from "./main.js";
+
 //BLOQUEAR ENVIO DO FORMULÁRIO
 const btnEnviar = document.querySelector('#btn-enviar');
 const feedbacks = document.querySelectorAll('.feedback');
@@ -21,6 +23,23 @@ function verificaFeedback() {
     const camposPreenchidos = nome && matricula && idade && serie && genero;
 
     btnEnviar.disabled = hasError || !camposPreenchidos;
+}
+
+//VALIDA DUPLICIDADE DE MATRÍCULA
+function hasMatricula(matricula){
+    let usuarios = getUsersFromStorage()
+    
+    for(let num = 0; num < usuarios.length; num++){
+        let matriculaRegistrada = usuarios[num].registrationValue;
+        if(matricula === matriculaRegistrada){
+            console.log(`A matrícula registrada ${matricula} já existe: ${matriculaRegistrada}`);
+            return true;
+        }
+        
+    }
+
+    console.log(`A matrícula registrada ${matricula} não existe`);
+    return false;
 }
 
 //VALIDAÇÃO "NOME COMPLETO"
@@ -121,12 +140,25 @@ document.querySelector('#matricula').addEventListener('input', function(e){
 document.querySelector('#matricula').addEventListener('blur', function(e){
     const feedback = document.querySelector('#matricula-feedback');
     const input = e.target
-
+    let matricula = e.target.value
+    
     if(e.target.value.length < 6){
         input.style.border = "2px solid red";
         feedback.textContent = 'O matrícula deve possuir 6 números';
         verificaFeedback();
         return;
+    }else{
+        input.style.border = '';
+        feedback.textContent = '';
+        verificaFeedback();
+    }
+    
+    matricula = parseInt(matricula)
+    const matriculaExiste = hasMatricula(matricula);
+
+    if(matriculaExiste){
+        input.style.border = "2px solid red";
+        feedback.textContent = 'O matrícula já cadastrada';
     }else{
         input.style.border = '';
         feedback.textContent = '';
