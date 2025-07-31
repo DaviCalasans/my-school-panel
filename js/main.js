@@ -1,3 +1,9 @@
+//PEGA OS DADOS E TRANSFORMA A STRING EM ARRAY
+export function getUsersFromStorage(){
+    const UsersStr = localStorage.getItem('usuarios');
+    return UsersStr ? JSON.parse(UsersStr) : []; 
+}
+
 function myEscope(){
     let users = getUsersFromStorage();
     const form = document.querySelector('.form')
@@ -40,11 +46,7 @@ function myEscope(){
     function addUserInStorage(usersStr){
         localStorage.setItem('usuarios', usersStr);
     }
-    //PEGA OS DADOS E TRANSFORMA A STRING EM ARRAY
-    function getUsersFromStorage(){
-        const UsersStr = localStorage.getItem('usuarios');
-        return UsersStr ? JSON.parse(UsersStr) : []; 
-    }
+    
 
     function getIconGender(genderValue){
         if(genderValue === 'Masculino'){
