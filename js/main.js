@@ -8,10 +8,11 @@ function myEscope(){
     let users = getUsersFromStorage();
     const form = document.querySelector('.form')
     const layoutForm = document.querySelector('.layout-form');
-    console.log(users);
+    // console.log(users);
     renderUsertoScreen(users);
     let qtdUsers = document.querySelector('#qtd-users');
     qtdUsersTotal(qtdUsers);
+    const inputSearch = document.querySelector('#search');
 
     function getFormValues(event){
         event.preventDefault();
@@ -33,9 +34,52 @@ function myEscope(){
         form.reset();
 
     }
+    //RECEBE O QUE FOI DIGITADO NO INPUT DE PESQUISA
+    inputSearch.addEventListener('input', function(e){
+        let nomeDigitado = e.target.value;
+        if(nomeDigitado !== ''){
+            encontrarNome(nomeDigitado);
+        }else{
+            renderUsertoScreen(users);
+        }
+    })
+
+    //BUSCA NO ARRAY users O NOME DIGITADO
+    function encontrarNome(nomeDigitado){
+        const nomesEncontrados = users.filter(user => 
+        user.name.toLowerCase().startsWith(nomeDigitado.toLowerCase())
+        );
+
+        if(nomesEncontrados.length < 1){
+            console.log("Não foi encontrado nenhum resultado");
+            esconderCards();
+            return;
+        }
+
+        if(nomesEncontrados.length > 0 && nomesEncontrados.length < 2){
+            console.log(`Foi encontrado 1 resultado: ${nomesEncontrados}`);
+            mostrarCards(nomesEncontrados);
+            return;
+        }
+
+        if(nomesEncontrados.length > 1){
+            console.log(`Foram encontrados ${nomesEncontrados.length} resultados`);
+            mostrarCards(nomesEncontrados);
+            return;
+        }
+    }
 
     function qtdUsersTotal(qtdUsers){
         qtdUsers.innerHTML = `Quantidade de alunos cadastrados: ${users.length}`
+    }
+
+    function esconderCards(){
+        const containerCard = document.querySelector('.container-card-user');
+        containerCard.innerHTML = 'Não foi encontrado nenhum usuário';
+    }
+
+    function mostrarCards(nomesEncontrados){
+        renderUsertoScreen(nomesEncontrados);
     }
 
     //ADICIONA O OBJETO newUser AO ARRAY users (Alterei o nome da função para addUserAndSave)
