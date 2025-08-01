@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="btns">
-        <input type="submit" value="Criar aluno" onclick="showForm()">
-    </div>
     
+    <div class="container-qtd-users">
+        <p id="qtd-users">Quantidade de alunos cadastrados: 0</p>
+    </div>
+
     <div class="layout-form">
         <form action="" class="form" autocomplete="off">
             <label for="name">Nome completo:</label>
@@ -73,6 +74,10 @@
             <input id="btn-enviar" type="submit" disabled>
 
         </form>
+    </div>
+
+    <div class="btns">
+        <input type="submit" value="Criar aluno" onclick="showForm()">
     </div>
     
     <div class="container-card-user">

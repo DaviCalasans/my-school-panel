@@ -10,6 +10,8 @@ function myEscope(){
     const layoutForm = document.querySelector('.layout-form');
     console.log(users);
     renderUsertoScreen(users);
+    let qtdUsers = document.querySelector('#qtd-users');
+    qtdUsersTotal(qtdUsers);
 
     function getFormValues(event){
         event.preventDefault();
@@ -26,9 +28,14 @@ function myEscope(){
         const newUser = createUser(nameValue,formatAgeValue,genderValue,registrationValue, serieValue);
         addUserAndSave(newUser);
         renderUsertoScreen(users);
+        qtdUsersTotal(qtdUsers);
         layoutForm.style.display = 'none';
         form.reset();
 
+    }
+
+    function qtdUsersTotal(qtdUsers){
+        qtdUsers.innerHTML = `Quantidade de alunos cadastrados: ${users.length}`
     }
 
     //ADICIONA O OBJETO newUser AO ARRAY users (Alterei o nome da função para addUserAndSave)
@@ -146,6 +153,7 @@ function myEscope(){
     window.deleteUser = function(index) {
         users.splice(index, 1); 
         toStringfy(users)
+        qtdUsersTotal(qtdUsers);
         renderUsertoScreen(users);
     }
 
