@@ -103,12 +103,12 @@ function myEscope(){
         if(genderValue === 'Masculino'){
             return {
                 textGender: 'Masculino',
-                iconGender: 'imgs/male-icon.png'
+                iconGender: 'imgs/svg/male-icon.svg'
             }
         }else{
             return {
                 textGender: 'Feminino',
-                iconGender: 'imgs/female-icon.png'
+                iconGender: 'imgs/svg/female-icon.svg'
             }
         }
     }
