@@ -155,15 +155,24 @@ function myEscope(){
     }
     
     function createCard(){
+        const btnCriar = document.querySelector('#btn-criar-aluno');
         const containerCard = document.querySelector('.container-card-user')
         const cardUserlayout = document.createElement('div');
         cardUserlayout.className = 'card-user'
-        containerCard.appendChild(cardUserlayout);
+        console.log(btnCriar)
+        containerCard.insertBefore(cardUserlayout, btnCriar);
     }
     
     function renderUsertoScreen(usuariosSalvos){
         const containerCard = document.querySelector('.container-card-user');
-        containerCard.innerHTML = ''; // Limpa os cards antigos
+        const cards = containerCard.querySelectorAll('.card-user');
+        cards.forEach(card => card.remove());
+        containerCard.style.background = 'purple';
+        containerCard.style.display = 'flex';
+        containerCard.style.flexDirection = 'row';
+        containerCard.style.flexWrap = 'wrap';
+        containerCard.style.justifyContent = 'center';
+
 
         // Cria um card para cada usuário salvo
         for(let i = 0; i < usuariosSalvos.length; i++){
