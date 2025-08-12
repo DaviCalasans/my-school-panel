@@ -15,6 +15,7 @@
     --color-white: #FFFFFF;
     --color-black: #000000;
     --color-gray-placeholder: #686868;
+    --color-gray-sidebar: #D7D7D7;
     --color-light-gray: #DEDEDE;
     --color-light-blue: #8CC2FF;
     --color-light-red: #EA7D7D;
@@ -46,22 +47,39 @@
 body{
     display: grid;
     grid-template-columns: 245px 1fr;
+    font-family: var(--font-family-base);
 }
 
 .container-sidebar{
-    border: 2px solid red;
+    /* border: 2px solid red; */
     padding: 20px 15px 20px 15px;
+    border-radius: 0 var(--radius-medium) var(--radius-medium) 0;
+    box-shadow: var(--shadow-sidebar);
 }
 
 .container-main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     height: 100vh;
     padding: 40px 0;
     overflow: scroll;
+    overflow-x: hidden;
     gap: 20px;
+}
+
+.container-main::-webkit-scrollbar{
+    width: 5px;
+}
+
+.container-main::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.container-main::-webkit-scrollbar-thumb {
+    background: var(--color-gray-placeholder); /* cor do "polegar" da scrollbar */
+    border-radius: 5px;
 }
 
 .total-search{
@@ -91,10 +109,29 @@ body{
     /* background-color: blue; */
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .sidebar .user-log .img-infor-user{
     display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* FONTES */
+.ps p:nth-child(1){
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-semibold);
+}
+
+.ps p:nth-child(2){
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-regular);
+}
+
+.option-sidebar p{
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-semibold);
 }
 
 .container-card-user{
@@ -134,12 +171,26 @@ body{
     gap: 10px;
 }
 
+.option-sidebar{
+    width: 207px;
+    height: 45px;
+    background-color: var(--color-white);
+    display: flex;
+    gap: 9.5px;
+    border-radius: var(--radius-medium);
+}
+
+#users-dashboard{
+    background-color: var(--color-gray-sidebar);
+}
+
 .user-information{
     /* background-color: green; */
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
+
 
 /* ICONS */
 
