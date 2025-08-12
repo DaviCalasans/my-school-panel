@@ -59,19 +59,23 @@ body{
     align-items: center;
     border: 2px solid blue;
     height: 100vh;
-    /* padding: 50px 152px; */
+    padding: 40px 0;
     overflow: scroll;
+    gap: 20px;
 }
 
 .total-search{
     display: flex;
-    width: 100%;
+    width: 860px;
     justify-content: space-between;
+    /* background-color: red; */
+
 }
 
 .container-search{
     /* background-color: red; */
     display: flex;
+    margin-right: 8px;
 }
 
 .sidebar{
@@ -101,6 +105,7 @@ body{
     width: 400px;
     height: 200px;
     border: 2px solid black;
+    margin: 5px 20px;
 }
 
 

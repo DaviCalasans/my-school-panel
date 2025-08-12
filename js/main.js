@@ -167,11 +167,11 @@ function myEscope(){
         const containerCard = document.querySelector('.container-card-user');
         const cards = containerCard.querySelectorAll('.card-user');
         cards.forEach(card => card.remove());
-        containerCard.style.background = 'purple';
+        // containerCard.style.background = 'purple';
         containerCard.style.display = 'flex';
         containerCard.style.flexDirection = 'row';
         containerCard.style.flexWrap = 'wrap';
-        containerCard.style.justifyContent = 'center';
+        containerCard.style.justifyContent = 'flex-start';
 
 
         // Cria um card para cada usuário salvo
