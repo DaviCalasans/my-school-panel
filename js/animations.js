@@ -9,12 +9,18 @@ const logoCloseSidebar = document.querySelector('.logo-close-sidebar')
 btnCloseSidebar.addEventListener('click', (e) => {
     if(!conteinerSidebar.classList.contains('container-sidebar-fechada')){
         conteinerSidebar.classList.add('container-sidebar-fechada');
-        btnCloseSidebar.src = './imgs/svg/open-sidebar-icon.svg';
+        logo.classList.add('logo-fechada');
+        logoOptions.classList.add('logo-options-fechada');
+        logoCloseSidebar.classList.add('logo-close-sidebar-fechada');
+        btnCloseSidebar.classList.add('close-sidebar-fechada');
         removeText();
         changeLogo();
     }else{
         conteinerSidebar.classList.remove('container-sidebar-fechada');
-        btnCloseSidebar.src = './imgs/svg/close-sidebar-icon.svg';
+        logo.classList.remove('logo-fechada');
+        logoOptions.classList.remove('logo-options-fechada');
+        logoCloseSidebar.classList.remove('logo-close-sidebar-fechada');
+        btnCloseSidebar.classList.remove('close-sidebar-fechada');
         restoreText();
     }
 })
@@ -31,12 +37,12 @@ const restoreText = () => {
     })
 }
 
-const changeLogo = () => {
-    logoOptions.style.alignItems = 'center';
-    logoCloseSidebar.style.alignItems = 'center';
-    btnCloseSidebar.style.alignSelf = 'center';
-    logo.src = './imgs/svg/logo-icon.svg';
-    logo.style.width = '60px';
-    logo.style.backgroundColor = 'red';
-}
+// const changeLogo = () => {
+    //  }
+    //     logo.src = './imgs/svg/logo-icon.svg';
+    //     logoOptions.style.alignItems = 'center';
+    //     logoCloseSidebar.style.alignItems = 'center';
+    //     btnCloseSidebar.style.alignSelf = 'center';
+    //     logo.style.width = '60px';
+    //     logo.style.backgroundColor = 'red';
 

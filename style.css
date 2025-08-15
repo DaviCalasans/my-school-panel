@@ -60,6 +60,10 @@ body{
     box-shadow: var(--shadow-sidebar);
 }
 
+hr{
+    width: 100%;
+}
+
 /* SIDEBAR FECHADA */
 .container-sidebar-fechada{
     border: 2px solid purple;
@@ -68,6 +72,29 @@ body{
 
 .txt-sidebar-fechado{
     display: none;
+}
+
+#logo-text.logo-fechada{
+    /* background-color: red; */
+    content: url('./imgs/svg/logo-icon.svg');
+    width: 60px;
+    margin-left: 0;
+}
+
+.logo-options-fechada{
+    /* background-color: yellow; */
+    align-items: center;
+}
+
+.logo-close-sidebar-fechada{
+    /* background-color: blue; */
+    align-items: center;
+}
+
+#close-sidebar.close-sidebar-fechada{
+    /* background-color: red; */
+    content: url(./imgs/svg/open-sidebar-icon.svg);
+    align-self: center;
 }
 
 
@@ -81,16 +108,19 @@ body{
 }
 
 .sidebar .user-log{
-    /* background-color: blue; */
+    background-color: blue;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
 
 .sidebar .user-log .img-infor-user{
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 5px;
+    background-color: rebeccapurple;
 }
 
 .option-sidebar p{
@@ -99,7 +129,7 @@ body{
 }
 
 #users-dashboard, #settings{
-    background-color: blue;
+    /* background-color: blue; */
     display: flex;
     align-items: center;
     width: 100%;
@@ -116,10 +146,11 @@ body{
     display: flex;
     gap: 20px;
     flex-direction: column;
+    width: 100%;
 }
 
 .options-sidebar{
-    background-color: green;
+    /* background-color: green; */
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -215,6 +246,7 @@ body{
     width: 144px;
     height: 60px;
     /* background-color: rebeccapurple; */
+    margin-left: -15px;
 }
 
 #close-sidebar, #setings-icon, #users-icon{
