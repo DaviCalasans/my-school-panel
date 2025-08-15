@@ -54,19 +54,50 @@ body{
 
 /* SIDEBAR ABERTA */
 .container-sidebar{
-    border: 2px solid red;
+    /* border: 2px solid red; */
+    width: 245px;
     padding: 20px 15px 20px 15px;
     border-radius: 0 var(--radius-medium) var(--radius-medium) 0;
     box-shadow: var(--shadow-sidebar);
+    transition: width 0.2s ease;
 }
 
 hr{
     width: 100%;
 }
 
+#users-dashboard, #settings{
+    /* background-color: blue; */
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#users-dashboard{
+    background-color: var(--color-gray-sidebar);
+}
+
+#users-dashboard.option-sidebar.option-sidebar-fechada, #settings.option-sidebar.option-sidebar-fechada{
+    /* background-color: red; */
+    justify-content: center;
+    padding-left: 0;
+
+}
+
+.option-sidebar{
+    width: 207px;
+    height: 45px;
+    background-color: var(--color-white);
+    display: flex;
+    justify-content: left;
+    padding-left: 5px;
+    gap: 9.5px;
+    border-radius: var(--radius-medium);
+}
+
 /* SIDEBAR FECHADA */
 .container-sidebar-fechada{
-    border: 2px solid purple;
+    /* border: 2px solid purple; */
     width: 70px;
 }
 
@@ -97,6 +128,14 @@ hr{
     align-self: center;
 }
 
+.user-log-fechada{
+    flex-direction: column-reverse;
+    gap: 20px;
+}
+
+.img-infor-user-fechada{
+    flex-direction: column;
+}
 
 .sidebar{
     /* background-color: red; */
@@ -108,31 +147,22 @@ hr{
 }
 
 .sidebar .user-log{
-    background-color: blue;
+    /* background-color: blue; */
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
 
 .sidebar .user-log .img-infor-user{
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 5px;
-    background-color: rebeccapurple;
+    /* background-color: rebeccapurple; */
 }
 
 .option-sidebar p{
     font-size: var(--font-size-small);
     font-weight: var(--font-weight-semibold);
-}
-
-#users-dashboard, #settings{
-    /* background-color: blue; */
-    display: flex;
-    align-items: center;
-    width: 100%;
 }
 
 .logo-options{
@@ -156,19 +186,6 @@ hr{
     gap: 10px;
     align-items: center;
     width: 100%;
-}
-
-.option-sidebar{
-    width: 207px;
-    height: 45px;
-    background-color: var(--color-white);
-    display: flex;
-    gap: 9.5px;
-    border-radius: var(--radius-medium);
-}
-
-#users-dashboard{
-    background-color: var(--color-gray-sidebar);
 }
 
 .user-information{

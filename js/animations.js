@@ -3,7 +3,10 @@ const conteinerSidebar = document.querySelector('.container-sidebar');
 const txtSidebar = document.querySelectorAll('.txt-sidebar');
 const logo = document.querySelector('#logo-text');
 const logoOptions = document.querySelector('.logo-options');
-const logoCloseSidebar = document.querySelector('.logo-close-sidebar')
+const logoCloseSidebar = document.querySelector('.logo-close-sidebar');
+const userLog = document.querySelector('.user-log');
+const imgInfoUser = document.querySelector('.img-infor-user');
+const OptSidebar = document.querySelectorAll('.option-sidebar');
 
 
 btnCloseSidebar.addEventListener('click', (e) => {
@@ -13,6 +16,9 @@ btnCloseSidebar.addEventListener('click', (e) => {
         logoOptions.classList.add('logo-options-fechada');
         logoCloseSidebar.classList.add('logo-close-sidebar-fechada');
         btnCloseSidebar.classList.add('close-sidebar-fechada');
+        userLog.classList.add('user-log-fechada');
+        imgInfoUser.classList.add('img-infor-user-fechada');
+        addOptionsSidebar();
         removeText();
         changeLogo();
     }else{
@@ -21,7 +27,10 @@ btnCloseSidebar.addEventListener('click', (e) => {
         logoOptions.classList.remove('logo-options-fechada');
         logoCloseSidebar.classList.remove('logo-close-sidebar-fechada');
         btnCloseSidebar.classList.remove('close-sidebar-fechada');
+        userLog.classList.remove('user-log-fechada');
+        imgInfoUser.classList.remove('img-infor-user-fechada');
         restoreText();
+        removeOptionsSidebar();
     }
 })
 
@@ -37,6 +46,16 @@ const restoreText = () => {
     })
 }
 
+const addOptionsSidebar = () => {
+    OptSidebar.forEach(opt =>{
+        opt.classList.add('option-sidebar-fechada');
+    })
+}
+const removeOptionsSidebar = () => {
+    OptSidebar.forEach(opt =>{
+        opt.classList.remove('option-sidebar-fechada');
+    })
+}
 // const changeLogo = () => {
     //  }
     //     logo.src = './imgs/svg/logo-icon.svg';
