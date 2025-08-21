@@ -190,12 +190,15 @@ function myEscope(){
         for(let i = 0; i < usuariosSalvos.length; i++){
             const {name, dateBorn, age, textGender,iconGender, registrationValue, serieValue} = usuariosSalvos[i]; 
             cardUser[i].innerHTML = `
+                <img src="./imgs/svg/user-card-icon.svg" alt="" id="user-card-img">
+                <div class="text-info-user">
                 <p>${name}</p>
                 <p>${dateBorn} (${age} anos)</p> 
                 <p>Matrícula: 0000${registrationValue}</p> 
                 <p>${serieValue}</p> 
                 <p>${textGender} <img src="${iconGender}" id="male-icon"></p>
-                <button onClick="deleteUser(${i})">Deletar</button>
+                </div>
+                <button onClick="deleteUser(${i})" id="btn-delete-small"><img src="./imgs/svg/btn-delete-small.svg" alt="" ></button>
             `;
         }
     };
