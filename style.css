@@ -237,6 +237,7 @@ hr{
 
 .container-card-user{
     width: 900px;
+    padding-left: 10px;
 }
 
 .card-user, #btn-criar-aluno{

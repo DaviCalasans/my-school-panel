@@ -41,6 +41,7 @@ function myEscope(){
             encontrarNome(nomeDigitado);
         }else{
             renderUsertoScreen(users);
+            apagarFeedback();
         }
     })
 
@@ -75,7 +76,13 @@ function myEscope(){
 
     function esconderCards(){
         const containerCard = document.querySelector('.container-card-user');
-        containerCard.innerHTML = 'Não foi encontrado nenhum usuário';
+        containerCard.innerHTML = `<div class="nd-encontrado">Não foi encontrado nenhum usuário</div>
+        <input type="submit" value="Criar aluno" onclick="showForm()" id="btn-criar-aluno">`
+    }
+
+    function apagarFeedback(){
+        const ndEncontrado = document.querySelector('.nd-encontrado');
+        ndEncontrado.remove();
     }
 
     function mostrarCards(nomesEncontrados){
