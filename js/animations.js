@@ -7,6 +7,7 @@ const logoCloseSidebar = document.querySelector('.logo-close-sidebar');
 const userLog = document.querySelector('.user-log');
 const imgInfoUser = document.querySelector('.img-infor-user');
 const OptSidebar = document.querySelectorAll('.option-sidebar');
+const body = document.body;
 
 
 btnCloseSidebar.addEventListener('click', (e) => {
@@ -18,6 +19,7 @@ btnCloseSidebar.addEventListener('click', (e) => {
         btnCloseSidebar.classList.add('close-sidebar-fechada');
         userLog.classList.add('user-log-fechada');
         imgInfoUser.classList.add('img-infor-user-fechada');
+        body.classList.add('sidebar-fechada');
         addOptionsSidebar();
         removeText();
         changeLogo();
@@ -29,6 +31,7 @@ btnCloseSidebar.addEventListener('click', (e) => {
         btnCloseSidebar.classList.remove('close-sidebar-fechada');
         userLog.classList.remove('user-log-fechada');
         imgInfoUser.classList.remove('img-infor-user-fechada');
+        body.classList.remove('sidebar-fechada');
         restoreText();
         removeOptionsSidebar();
     }

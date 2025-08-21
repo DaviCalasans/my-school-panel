@@ -50,6 +50,7 @@ body{
     display: grid;
     grid-template-columns: 245px 1fr;
     font-family: var(--font-family-base);
+    transition: 200ms;
 }
 
 /* SIDEBAR ABERTA */
@@ -99,6 +100,11 @@ hr{
 .container-sidebar-fechada{
     /* border: 2px solid purple; */
     width: 70px;
+}
+
+body.sidebar-fechada {
+    grid-template-columns: 70px 1fr;
+    transition: 200ms;
 }
 
 .txt-sidebar-fechado{
