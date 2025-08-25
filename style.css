@@ -233,13 +233,28 @@ body.sidebar-fechada {
     width: 860px;
     justify-content: space-between;
     /* background-color: red; */
-    
+    align-items: center;
 }
 
 .container-search{
     /* background-color: red; */
     display: flex;
     margin-right: 8px;
+}
+
+
+#search{
+    width: 288px;
+    height: 40px;
+    border: none;
+    background: none;
+}
+.input-icon-search{
+    /* background-color: purple; */
+    display: flex;
+    align-items: center;
+    border-radius: var(--radius-medium);
+    border: 0.5px solid var(--color-gray-border-card);
 }
 
 .container-card-user{
@@ -249,9 +264,18 @@ body.sidebar-fechada {
 
 .card-user, #btn-criar-aluno{
     width: 400px;
-    height: 200px;
+    height: 230px;
     border: 0.5px solid var(--color-gray-border-card);
     margin: 5px 20px;
+}
+
+#btn-criar-aluno{
+    padding: 18px;
+    position: relative;
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-card);
+    background-color: var(--color-light-blue);
+    border: none;
 }
 
 .card-user{

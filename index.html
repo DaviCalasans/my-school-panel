@@ -53,13 +53,17 @@
                 </div>
                 
                 <div class="container-search">
-                    <input type="text" id="search">
-                    <img src="./imgs/svg/search-icon.svg" alt=" " id="icon-search">
+                    <div class="input-icon-search">
+                        <input type="text" id="search">
+                        <img src="./imgs/svg/search-icon.svg" alt=" " id="icon-search">
+                    </div>
                 </div>
             </div>
 
             <div class="container-card-user">
-                    <input type="submit" value="Criar aluno" onclick="showForm()" id="btn-criar-aluno">
+                    <button type="submit" value="Criar aluno" onclick="showForm()" id="btn-criar-aluno">
+                        <img src="./imgs/svg/add-user-icon.svg" alt="">
+                    </button>
             </div>
         </div>
     </main>
@@ -126,12 +130,11 @@
             value="Feminino" 
             id="female">Feminino</label>
             <input id="btn-enviar" type="submit" disabled>
-                <img src="./imgs/svg/user-card-icon.svg" alt="">
         </form>
     </div>
 
-    <script type="module" src="/js/main.js"></script>
-    <script type="module" src="/js/validation.js"></script>
-    <script type="module" src="/js/animations.js"></script>
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/validation.js"></script>
+    <script type="module" src="./js/animations.js"></script>
 </body>
 </html>

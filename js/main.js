@@ -77,7 +77,9 @@ function myEscope(){
     function esconderCards(){
         const containerCard = document.querySelector('.container-card-user');
         containerCard.innerHTML = `<div class="nd-encontrado">Não foi encontrado nenhum usuário</div>
-        <input type="submit" value="Criar aluno" onclick="showForm()" id="btn-criar-aluno">`
+        <button type="submit" value="Criar aluno" onclick="showForm()" id="btn-criar-aluno">
+            <img src="./imgs/svg/add-user-icon.svg" alt="">
+        </button>`
     }
 
     function apagarFeedback(){
