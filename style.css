@@ -17,6 +17,7 @@
     --color-gray-placeholder: #686868;
     --color-gray-border-card: #8C8C8C;
     --color-gray-sidebar: #D7D7D7;
+    --color-gray-modal: #DADADA;
     --color-light-gray: #DEDEDE;
     --color-light-blue: #8CC2FF;
     --color-light-red: #EA7D7D;
@@ -52,6 +53,48 @@ body{
     grid-template-columns: 245px 1fr;
     font-family: var(--font-family-base);
     transition: 200ms;
+}
+
+/* MODAIS */
+.modal-confirm-delete{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: var(--color-gray-modal);
+    width: 400px;
+    height: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--radius-large);
+
+}
+
+#btns-modal-confirm-delete{
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+}
+
+#btns-modal-confirm-delete button{
+    width: 125px;
+    height: 53px;
+    border-radius: var(--radius-large);
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-regular);
+    margin-top: 25px;
+}
+
+#btn-long-delete{
+    border: none;
+    background: none;
+}
+
+#nome-aluno{
+    font-weight: var(--font-weight-semibold);
 }
 
 /* SIDEBAR ABERTA */
