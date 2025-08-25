@@ -8,6 +8,8 @@ function myEscope(){
     let users = getUsersFromStorage();
     const form = document.querySelector('.form')
     const layoutForm = document.querySelector('.layout-form');
+    const modalConfirmDelete = document.querySelector('.modal-confirm-delete');
+    console.log(modalConfirmDelete)
     // console.log(users);
     renderUsertoScreen(users);
     let qtdUsers = document.querySelector('#qtd-users');
@@ -200,7 +202,7 @@ function myEscope(){
                 <p>${serieValue}</p> 
                 <p>${textGender} <img src="${iconGender}" id="male-icon"></p>
                 </div>
-                <button onClick="deleteUser(${i})" id="btn-delete-small"><img src="./imgs/svg/btn-delete-small.svg" alt="" ></button>
+                <button onclick="showModalDelete()" id="btn-delete-small"><img src="./imgs/svg/btn-delete-small.svg" alt="" ></button>
             `;
         }
     };
@@ -214,6 +216,17 @@ function myEscope(){
             layoutForm.style.display = 'block';
         }
     };
+
+    window.showModalDelete = function(){
+        const display = window.getComputedStyle(modalConfirmDelete).display;
+        console.log("Esse é o btn!")
+        if(display !== 'none'){
+            modalConfirmDelete.style.display = 'none';
+        }else{
+            modalConfirmDelete.style.display = 'flex';
+        }
+    };
+
 
     window.deleteUser = function(index) {
         users.splice(index, 1); 

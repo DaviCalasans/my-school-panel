@@ -68,7 +68,7 @@ body{
     justify-content: center;
     align-items: center;
     border-radius: var(--radius-large);
-
+    display: none;
 }
 
 #btns-modal-confirm-delete{
