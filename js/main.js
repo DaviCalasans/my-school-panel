@@ -202,7 +202,7 @@ function myEscope(){
                 <p>${serieValue}</p> 
                 <p>${textGender} <img src="${iconGender}" id="male-icon"></p>
                 </div>
-                <button onclick="showModalDelete()" id="btn-delete-small"><img src="./imgs/svg/btn-delete-small.svg" alt="" ></button>
+                <button onclick="showModalDelete(${i})" id="btn-delete-small"><img src="./imgs/svg/btn-delete-small.svg" alt="" ></button>
             `;
         }
     };
@@ -217,8 +217,16 @@ function myEscope(){
         }
     };
 
-    window.showModalDelete = function(){
+    window.showModalDelete = function(index){
         const display = window.getComputedStyle(modalConfirmDelete).display;
+        const btnDelete = document.querySelector('#btn-long-delete');
+
+        btnDelete.addEventListener('click', function(e){
+            deleteUser(index);
+            modalConfirmDelete.style.display = 'none'
+        })
+
+        console.log(btnDelete)
         console.log("Esse é o btn!")
         if(display !== 'none'){
             modalConfirmDelete.style.display = 'none';
