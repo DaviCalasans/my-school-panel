@@ -207,6 +207,30 @@ function myEscope(){
         }
     };
 
+    function addToast(mensagem, status){
+        const containerToast = document.querySelector('.container-toast');
+        const toast = document.createElement('div');
+        toast.className = `toast ${status}`;
+        toast.innerHTML = mensagem;
+        containerToast.appendChild(toast);
+
+        const progress = document.createElement("div");
+        progress.className = "progress";
+        toast.appendChild(progress);
+
+
+        // animação de entrada
+        setTimeout(() => {
+          toast.classList.add("show");
+        }, 100);
+    
+        // remover depois de 3s
+        setTimeout(() => {
+          toast.classList.remove("show");
+          setTimeout(() => toast.remove(), 300); // esperar animação sair
+        }, 5000);
+    }
+
     window.showForm = function(){
         const display = window.getComputedStyle(layoutForm).display;
         
@@ -223,7 +247,9 @@ function myEscope(){
 
         btnDelete.addEventListener('click', function(e){
             deleteUser(index);
-            modalConfirmDelete.style.display = 'none'
+            modalConfirmDelete.style.display = 'none';
+            let statusDelete = 'delete'
+            addToast('Usuário deletado com sucesso!', statusDelete);
         })
 
         console.log(btnDelete)

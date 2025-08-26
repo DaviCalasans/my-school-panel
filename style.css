@@ -60,6 +60,7 @@ body{
     position: absolute;
     top: 50%;
     left: 50%;
+    transform: translate(-50%, -50%);
     background-color: var(--color-gray-modal);
     width: 400px;
     height: 240px;
@@ -95,6 +96,50 @@ body{
 
 #nome-aluno{
     font-weight: var(--font-weight-semibold);
+}
+
+.container-toast{
+    width: 300px;
+    height: 80px;
+    /* background-color: rgb(223, 79, 79); */
+    /* border: 2px solid black; */
+    position: absolute;
+    right: 1%;
+    top: 4%;
+}
+
+.toast.delete{
+    background-color: var(--color-light-red);
+    width: 300px;
+    height: 80px;
+    transform: translateX(100%);
+    transition: all 0.3s ease;
+    border-radius: var(--radius-medium);
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.toast {
+  position: relative;
+  overflow: hidden;
+}
+
+.toast .progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.7);
+  width: 100%;
+  animation: progressBar 5s linear forwards;
+}
+
+@keyframes progressBar {
+  from { width: 100%; }
+  to { width: 0; }
 }
 
 /* SIDEBAR ABERTA */
