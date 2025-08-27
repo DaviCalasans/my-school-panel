@@ -211,7 +211,7 @@ function myEscope(){
         const containerToast = document.querySelector('.container-toast');
         const toast = document.createElement('div');
         toast.className = `toast ${status}`;
-        toast.innerHTML = mensagem;
+        toast.innerHTML = `<img src="./imgs/svg/check-icon.svg" alt=""> ${mensagem}`;
         containerToast.appendChild(toast);
 
         const progress = document.createElement("div");
@@ -245,7 +245,7 @@ function myEscope(){
         const display = window.getComputedStyle(modalConfirmDelete).display;
         const btnDelete = document.querySelector('#btn-long-delete');
 
-        btnDelete.addEventListener('click', function(e){
+        btnDelete.onclick = (function(e){
             deleteUser(index);
             modalConfirmDelete.style.display = 'none';
             let statusDelete = 'delete'
