@@ -72,17 +72,21 @@
     
     <div class="layout-form">
         <form action="" class="form" autocomplete="off">
-            <label for="name">Nome completo:</label>
-            <input 
-            type="text" 
-            placeholder="Ex: NEYMAR DA SILVA SANTOS" 
-            id="name" 
-            minlength="5" maxlength="60" 
-            pattern="^[A-Za-zÀ-ÿ\s]+$" 
-            title="Digite apenas letras" 
-            required>
-            <div id="name-feedback" class="feedback"></div>
- 
+            <h3>CADASTRAR</h3>
+            <div class="label-input">
+                <label for="name">Nome completo:</label>
+                <input 
+                type="text" 
+                placeholder="Ex: NEYMAR DA SILVA SANTOS" 
+                id="name" 
+                minlength="5" maxlength="60" 
+                pattern="^[A-Za-zÀ-ÿ\s]+$" 
+                title="Digite apenas letras" 
+                required>
+                <div id="name-feedback" class="feedback"></div>
+            </div>
+            
+            <div class="label-input">
             <label for="age">Idade:</label>
             <input type="date" 
             placeholder="Ex: 05/02/1994" 
@@ -90,7 +94,9 @@
             min="2000-01-01"
             max="2010-12-31" 
             required>
-
+            </div>
+            
+            <div class="label-input">
             <label for="matricula">Matrícula:</label>
             <div class="input-matricula">
                 <input type="text" 
@@ -105,7 +111,9 @@
                 required>
             </div>
             <div id="matricula-feedback" class="feedback"></div>
+            </div>
 
+            <div class="label-input">
             <label for="serie">Série:</label>
             <select name="serie" id="series" required>
                 <option value="" disabled selected>Selecione uma série</option>
@@ -114,25 +122,29 @@
                 <option value="3º Série EM">3º Série EM</option>
             </select>
             <div id="select-feedback" class="feedback"></div>
+            </div>
 
-            <label for="">Gênero:</label>
-            <img src="" alt="">
-            <label for="male">
-            <input type="radio" 
-            name="gender" 
-            value="Masculino" 
-            id="male" 
-            required>Masculino</label>
+            <div class="label-input">
+            <div class="gender-radio">
+                <label for="">Gênero:</label>
+                <img src="" alt="">
 
-            <label for="female">    
-            <input type="radio" 
-            name="gender" 
-            value="Feminino" 
-            id="female">Feminino</label>
-            <input id="btn-enviar" type="submit" disabled>
+                <div>
+                    <div id="male">
+                        <input type="radio" name="gender" value="Masculino" id="male" required>Masculino</label>
+                        <label for="male">
+                    </div>
+                    
+                    <div id="female">
+                        <input type="radio" name="gender" value="Feminino" id="female">Feminino</label>
+                        <label for="female">    
+                    </div>
+                </div>
+            </div>
+            </div>
+            <button id="btn-enviar" disabled><img src="./imgs/svg/btn-save-small.svg" alt=""></button>
         </form>
     </div>
-
     <div class="modal-confirm-delete">
         <p>Você tem certeza que deseja deletar o aluno:</p>
         <p id="nome-aluno">Fulano da Silva de Sá Carvalho</p>

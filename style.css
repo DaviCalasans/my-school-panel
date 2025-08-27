@@ -63,7 +63,8 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: var(--color-gray-modal);
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-card);
     width: 400px;
     height: 240px;
     display: flex;
@@ -441,27 +442,90 @@ body.sidebar-fechada {
     width: 200px;
     border: 2px solid var(--color-gray-placeholder);
 }
+
+.layout-form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
 .layout-form form{
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-flow: column nowrap;
-    width: 200px;
+    width: 350px;
+    height: 600px;
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-card);
+    border-radius: var(--radius-large);
+    gap: 10px;
+    padding: 25px;
 }
 .layout-form form input{
     padding: 10px;
     margin-bottom: 5px;
+    width: 300px;
+    border: 1px solid black;
+    border-radius: var(--radius-medium);
+    height: 45px;
 }
 
-.layout-form{
-    display: none;
-    position: absolute;
-    width: 200px;
-}
+
 
 .input-matricula{
     display: flex;
+    width: 300px;
 }
+
+#matricula{
+    /* background-color: red; */
+    border-radius: 0 var(--radius-medium) var(--radius-medium) 0  ;
+}
+
+#series{
+    width: 300px;
+    border: 1px solid black;
+    border-radius:  var(--radius-medium);
+    height: 45px;
+}
+
+.gender-radio{
+    /* background-color: var(--color-light-red); */
+    width: 300px;
+}
+
+.gender-radio div{
+    /* background-color: #8C8C8C; */
+    display: flex;
+    flex-direction: column;
+}
+
+#male, #female {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* background-color: green; Remova se não quiser cor */
+  gap: 8px; /* Espaço entre bolinha e texto */
+  margin-right: -5px;
+  margin-top: 5px;
+  width: 15px;
+  height: 25px;
+}
+
+.label-input{
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
 #four-zero{
-    width: 30px;
+    width: 52px;
+    border: 1px solid var(--color-gray-placeholder);
+    border-radius: var(--radius-medium) 0 0 var(--radius-medium) ;
 }
 
 #matricula{
@@ -470,6 +534,18 @@ body.sidebar-fechada {
 
 #male-icon, #female-icon{
     width: 15px;
+}
+
+#btn-enviar{
+    background: none;
+    border: none;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+#btn-enviar:disabled{
+    src: url(./imgs/svg/btn-save-small.svg);
+    cursor: not-allowed;
 }
 
 #name-feedback, #matricula-feedback, #select-feedback{
