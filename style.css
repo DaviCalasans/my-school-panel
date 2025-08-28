@@ -536,7 +536,13 @@ body.sidebar-fechada {
     width: 15px;
 }
 
-#btn-enviar{
+.btns-form{
+    display: flex;
+    /* background-color: red; */
+    align-self: flex-end;
+    gap: 15px;
+}
+#btn-enviar, #btn-cancelar-cadastro{
     background: none;
     border: none;
     align-self: flex-end;

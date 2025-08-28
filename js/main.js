@@ -233,7 +233,12 @@ function myEscope(){
 
     window.showForm = function(){
         const display = window.getComputedStyle(layoutForm).display;
-        
+        const btnCancelarCadastro = document.querySelector('#btn-cancelar-cadastro');
+
+        btnCancelarCadastro.onclick = (function(e){
+            layoutForm.style.display = 'none';
+        })
+
         if(display !== 'none'){
             layoutForm.style.display = 'none';
         }else{
@@ -244,6 +249,11 @@ function myEscope(){
     window.showModalDelete = function(index){
         const display = window.getComputedStyle(modalConfirmDelete).display;
         const btnDelete = document.querySelector('#btn-long-delete');
+        const btnCancelar = document.querySelector('#btn-cancelar');
+
+        btnCancelar.onclick = (function(e){
+            modalConfirmDelete.style.display = 'none';
+        })
 
         btnDelete.onclick = (function(e){
             deleteUser(index);
