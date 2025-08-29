@@ -170,7 +170,6 @@ function myEscope(){
         const containerCard = document.querySelector('.container-card-user')
         const cardUserlayout = document.createElement('div');
         cardUserlayout.className = 'card-user'
-        console.log(btnCriar)
         containerCard.insertBefore(cardUserlayout, btnCriar);
     }
     
@@ -211,13 +210,24 @@ function myEscope(){
         const containerToast = document.querySelector('.container-toast');
         const toast = document.createElement('div');
         toast.className = `toast ${status}`;
-        toast.innerHTML = `<img src="./imgs/svg/check-icon.svg" alt=""> ${mensagem}`;
+        console.log(status)
+
         containerToast.appendChild(toast);
-
-        const progress = document.createElement("div");
-        progress.className = "progress";
-        toast.appendChild(progress);
-
+        
+        if(status === 'delete'){
+            toast.innerHTML = `<img src="./imgs/svg/delete-icon.svg" alt=""> ${mensagem}`;
+            let progress = document.createElement("div");
+            progress.className = "progress";
+            progress.style.background = "var(--color-red)";
+            toast.appendChild(progress);
+        }
+        
+        if(status === 'create'){
+            toast.innerHTML = `<img src="./imgs/svg/check-icon.svg" alt=""> ${mensagem}`;
+            let progress = document.createElement("div");
+            progress.className = "progress";
+            toast.appendChild(progress);
+        }
 
         // animação de entrada
         setTimeout(() => {
@@ -245,7 +255,14 @@ function myEscope(){
             layoutForm.style.display = 'block';
         }
     };
+    
+    const btnEnviarForm = document.querySelector('#btn-enviar');
 
+    btnEnviarForm.onclick = (function(e){
+        console.log('botão clicado');
+        let statusDelete = 'create'
+        addToast('Usuário criado com sucesso!', statusDelete)
+    })
     window.showModalDelete = function(index){
         const display = window.getComputedStyle(modalConfirmDelete).display;
         const btnDelete = document.querySelector('#btn-long-delete');
