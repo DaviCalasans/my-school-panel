@@ -7,9 +7,9 @@ export function getUsersFromStorage(){
 function myEscope(){
     let users = getUsersFromStorage();
     const form = document.querySelector('.form')
-    const layoutForm = document.querySelector('.layout-form');
-    const modalConfirmDelete = document.querySelector('.modal-confirm-delete');
-    console.log(modalConfirmDelete)
+    const overlayDelete = document.querySelector('#overlay-delete');
+    const overlayForm = document.querySelector('#overlay-form');
+    console.log(overlayForm)
     // console.log(users);
     renderUsertoScreen(users);
     let qtdUsers = document.querySelector('#qtd-users');
@@ -32,7 +32,6 @@ function myEscope(){
         addUserAndSave(newUser);
         renderUsertoScreen(users);
         qtdUsersTotal(qtdUsers);
-        layoutForm.style.display = 'none';
         form.reset();
 
     }
@@ -242,52 +241,49 @@ function myEscope(){
     }
 
     window.showForm = function(){
-        const display = window.getComputedStyle(layoutForm).display;
         const btnCancelarCadastro = document.querySelector('#btn-cancelar-cadastro');
-
+        const btnFazerCadastro = document.querySelector('#btn-enviar');
+        
+        
         btnCancelarCadastro.onclick = (function(e){
-            layoutForm.style.display = 'none';
+            overlayForm.classList.remove('show')
         })
 
-        if(display !== 'none'){
-            layoutForm.style.display = 'none';
-        }else{
-            layoutForm.style.display = 'block';
-        }
+        btnFazerCadastro.onclick = (function(e){
+            overlayForm.classList.remove('show')
+            let statusDelete = 'create'
+            addToast('Usuário criado com sucesso!', statusDelete);
+        })
+
+        
+        overlayForm.classList.add('show')
     };
     
     const btnEnviarForm = document.querySelector('#btn-enviar');
 
     btnEnviarForm.onclick = (function(e){
-        console.log('botão clicado');
         let statusDelete = 'create'
         addToast('Usuário criado com sucesso!', statusDelete)
     });
 
     window.showModalDelete = function(index, nomeAluno){
-        const display = window.getComputedStyle(modalConfirmDelete).display;
         const btnDelete = document.querySelector('#btn-long-delete');
         const btnCancelar = document.querySelector('#btn-cancelar');
         const txtNomeAluno = document.querySelector('#nome-aluno');
 
         btnCancelar.onclick = (function(e){
-            modalConfirmDelete.style.display = 'none';
+            overlayDelete.classList.remove('show');
         })
 
         btnDelete.onclick = (function(e){
             deleteUser(index);
-            modalConfirmDelete.style.display = 'none';
+            overlayDelete.classList.remove('show');
             let statusDelete = 'delete'
             addToast('Usuário deletado com sucesso!', statusDelete);
         })
 
-        if(display !== 'none'){
-            modalConfirmDelete.style.display = 'none';
-        }else{
-            modalConfirmDelete.style.display = 'flex';
-            txtNomeAluno.textContent = nomeAluno;
-            console.log(txtNomeAluno.textContent);
-        }
+        overlayDelete.classList.add('show');
+        txtNomeAluno.textContent = nomeAluno;
     };
 
 
