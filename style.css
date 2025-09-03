@@ -58,7 +58,9 @@ body{
 }
 
 /* MODAIS */
-
+button {
+    cursor: pointer;
+}
 #overlay-delete, #overlay-form{
     opacity: 0;
     pointer-events: none;
@@ -380,6 +382,11 @@ body.sidebar-fechada {
     border: 0.5px solid var(--color-gray-border-card);
 }
 
+#search{
+    /* background-color: blue; */
+    padding-left: 10px;
+}
+
 .container-card-user{
     width: 900px;
     padding-left: 10px;
@@ -457,6 +464,7 @@ body.sidebar-fechada {
 
 #close-sidebar{
     align-self: flex-end;
+    cursor: pointer;
 }
 
 .container-card-user{
