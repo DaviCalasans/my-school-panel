@@ -97,8 +97,13 @@ body{
     background: none;
 }
 
+#btn-cancelar{
+    border: 2px solid black;
+}
+
 #nome-aluno{
     font-weight: var(--font-weight-semibold);
+    margin-top: 15px;
 }
 
 .container-toast{

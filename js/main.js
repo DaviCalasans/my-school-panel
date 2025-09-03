@@ -201,7 +201,7 @@ function myEscope(){
                 <p>${serieValue}</p> 
                 <p>${textGender} <img src="${iconGender}" id="male-icon"></p>
                 </div>
-                <button onclick="showModalDelete(${i})" id="btn-delete-small"><img src="./imgs/svg/btn-delete-small.svg" alt="" ></button>
+                <button onclick="showModalDelete(${i}, '${name}')" id="btn-delete-small"><img src="./imgs/svg/btn-delete-small.svg" alt="" ></button>
             `;
         }
     };
@@ -262,11 +262,13 @@ function myEscope(){
         console.log('botão clicado');
         let statusDelete = 'create'
         addToast('Usuário criado com sucesso!', statusDelete)
-    })
-    window.showModalDelete = function(index){
+    });
+
+    window.showModalDelete = function(index, nomeAluno){
         const display = window.getComputedStyle(modalConfirmDelete).display;
         const btnDelete = document.querySelector('#btn-long-delete');
         const btnCancelar = document.querySelector('#btn-cancelar');
+        const txtNomeAluno = document.querySelector('#nome-aluno');
 
         btnCancelar.onclick = (function(e){
             modalConfirmDelete.style.display = 'none';
@@ -279,12 +281,12 @@ function myEscope(){
             addToast('Usuário deletado com sucesso!', statusDelete);
         })
 
-        console.log(btnDelete)
-        console.log("Esse é o btn!")
         if(display !== 'none'){
             modalConfirmDelete.style.display = 'none';
         }else{
             modalConfirmDelete.style.display = 'flex';
+            txtNomeAluno.textContent = nomeAluno;
+            console.log(txtNomeAluno.textContent);
         }
     };
 
