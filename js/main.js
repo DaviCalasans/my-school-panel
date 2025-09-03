@@ -7,7 +7,9 @@ export function getUsersFromStorage(){
 function myEscope(){
     let users = getUsersFromStorage();
     const form = document.querySelector('.form')
-    const layoutForm = document.querySelector('.layout-form');
+    const overlayDelete = document.querySelector('#overlay-delete');
+    const overlayForm = document.querySelector('#overlay-form');
+    console.log(overlayForm)
     // console.log(users);
     renderUsertoScreen(users);
     let qtdUsers = document.querySelector('#qtd-users');
@@ -30,7 +32,6 @@ function myEscope(){
         addUserAndSave(newUser);
         renderUsertoScreen(users);
         qtdUsersTotal(qtdUsers);
-        layoutForm.style.display = 'none';
         form.reset();
 
     }
@@ -41,6 +42,7 @@ function myEscope(){
             encontrarNome(nomeDigitado);
         }else{
             renderUsertoScreen(users);
+            apagarFeedback();
         }
     })
 
@@ -75,7 +77,15 @@ function myEscope(){
 
     function esconderCards(){
         const containerCard = document.querySelector('.container-card-user');
-        containerCard.innerHTML = 'Não foi encontrado nenhum usuário';
+        containerCard.innerHTML = `<div class="nd-encontrado">Não foi encontrado nenhum usuário</div>
+        <button type="submit" value="Criar aluno" onclick="showForm()" id="btn-criar-aluno">
+            <img src="./imgs/svg/add-user-icon.svg" alt="">
+        </button>`
+    }
+
+    function apagarFeedback(){
+        const ndEncontrado = document.querySelector('.nd-encontrado');
+        ndEncontrado.remove();
     }
 
     function mostrarCards(nomesEncontrados){
@@ -103,12 +113,12 @@ function myEscope(){
         if(genderValue === 'Masculino'){
             return {
                 textGender: 'Masculino',
-                iconGender: 'imgs/male-icon.png'
+                iconGender: 'imgs/svg/male-icon.svg'
             }
         }else{
             return {
                 textGender: 'Feminino',
-                iconGender: 'imgs/female-icon.png'
+                iconGender: 'imgs/svg/female-icon.svg'
             }
         }
     }
@@ -155,15 +165,23 @@ function myEscope(){
     }
     
     function createCard(){
+        const btnCriar = document.querySelector('#btn-criar-aluno');
         const containerCard = document.querySelector('.container-card-user')
         const cardUserlayout = document.createElement('div');
         cardUserlayout.className = 'card-user'
-        containerCard.appendChild(cardUserlayout);
+        containerCard.insertBefore(cardUserlayout, btnCriar);
     }
     
     function renderUsertoScreen(usuariosSalvos){
         const containerCard = document.querySelector('.container-card-user');
-        containerCard.innerHTML = ''; // Limpa os cards antigos
+        const cards = containerCard.querySelectorAll('.card-user');
+        cards.forEach(card => card.remove());
+        // containerCard.style.background = 'purple';
+        containerCard.style.display = 'flex';
+        containerCard.style.flexDirection = 'row';
+        containerCard.style.flexWrap = 'wrap';
+        containerCard.style.justifyContent = 'flex-start';
+
 
         // Cria um card para cada usuário salvo
         for(let i = 0; i < usuariosSalvos.length; i++){
@@ -174,25 +192,100 @@ function myEscope(){
         for(let i = 0; i < usuariosSalvos.length; i++){
             const {name, dateBorn, age, textGender,iconGender, registrationValue, serieValue} = usuariosSalvos[i]; 
             cardUser[i].innerHTML = `
+                <img src="./imgs/svg/user-card-icon.svg" alt="" id="user-card-img">
+                <div class="text-info-user">
                 <p>${name}</p>
                 <p>${dateBorn} (${age} anos)</p> 
                 <p>Matrícula: 0000${registrationValue}</p> 
                 <p>${serieValue}</p> 
                 <p>${textGender} <img src="${iconGender}" id="male-icon"></p>
-                <button onClick="deleteUser(${i})">Deletar</button>
+                </div>
+                <button onclick="showModalDelete(${i}, '${name}')" id="btn-delete-small"><img src="./imgs/svg/btn-delete-small.svg" alt="" ></button>
             `;
         }
     };
 
-    window.showForm = function(){
-        const display = window.getComputedStyle(layoutForm).display;
+    function addToast(mensagem, status){
+        const containerToast = document.querySelector('.container-toast');
+        const toast = document.createElement('div');
+        toast.className = `toast ${status}`;
+        console.log(status)
+
+        containerToast.appendChild(toast);
         
-        if(display !== 'none'){
-            layoutForm.style.display = 'none';
-        }else{
-            layoutForm.style.display = 'block';
+        if(status === 'delete'){
+            toast.innerHTML = `<img src="./imgs/svg/delete-icon.svg" alt=""> ${mensagem}`;
+            let progress = document.createElement("div");
+            progress.className = "progress";
+            progress.style.background = "var(--color-red)";
+            toast.appendChild(progress);
         }
+        
+        if(status === 'create'){
+            toast.innerHTML = `<img src="./imgs/svg/check-icon.svg" alt=""> ${mensagem}`;
+            let progress = document.createElement("div");
+            progress.className = "progress";
+            toast.appendChild(progress);
+        }
+
+        // animação de entrada
+        setTimeout(() => {
+          toast.classList.add("show");
+        }, 100);
+    
+        // remover depois de 3s
+        setTimeout(() => {
+          toast.classList.remove("show");
+          setTimeout(() => toast.remove(), 300); // esperar animação sair
+        }, 5000);
+    }
+
+    window.showForm = function(){
+        const btnCancelarCadastro = document.querySelector('#btn-cancelar-cadastro');
+        const btnFazerCadastro = document.querySelector('#btn-enviar');
+        
+        
+        btnCancelarCadastro.onclick = (function(e){
+            overlayForm.classList.remove('show')
+        })
+
+        btnFazerCadastro.onclick = (function(e){
+            overlayForm.classList.remove('show')
+            let statusDelete = 'create'
+            addToast('Usuário criado com sucesso!', statusDelete);
+        })
+
+        
+        overlayForm.classList.add('show')
     };
+    
+    const btnEnviarForm = document.querySelector('#btn-enviar');
+
+    btnEnviarForm.onclick = (function(e){
+        let statusDelete = 'create'
+        addToast('Usuário criado com sucesso!', statusDelete)
+    });
+
+    window.showModalDelete = function(index, nomeAluno){
+        const btnDelete = document.querySelector('#btn-long-delete');
+        const btnCancelar = document.querySelector('#btn-cancelar');
+        const txtNomeAluno = document.querySelector('#nome-aluno');
+
+        btnCancelar.onclick = (function(e){
+            overlayDelete.classList.remove('show');
+        })
+
+        btnDelete.onclick = (function(e){
+            deleteUser(index);
+            overlayDelete.classList.remove('show');
+            let statusDelete = 'delete'
+            addToast('Usuário deletado com sucesso!', statusDelete);
+        })
+
+        overlayDelete.classList.add('show');
+        txtNomeAluno.textContent = nomeAluno;
+    };
+
 
     window.deleteUser = function(index) {
         users.splice(index, 1); 

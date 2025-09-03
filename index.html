@@ -7,87 +7,166 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <section class="container-sidebar">
+        <nav class="sidebar">
+            <div class="logo-options">
+                <div class="logo-close-sidebar">
+                    <img src="./imgs/svg/logo-text-icon.svg" alt="Logo My School Panel" id="logo-text">
+                    <hr class="divisor-line">
+                    <img src="./imgs/svg/close-sidebar-icon.svg" alt="Fechar sidebar" id="close-sidebar">
+                </div>
     
-    <div class="container-qtd-users">
-        <p id="qtd-users">Quantidade de alunos cadastrados: 0</p>
-    </div>
-
-    <div class="container-search">
-        <input type="text" id="search">
-        <img src="" alt=" ">
-    </div>
-
-    <div class="layout-form">
-        <form action="" class="form" autocomplete="off">
-            <label for="name">Nome completo:</label>
-            <input 
-            type="text" 
-            placeholder="Ex: NEYMAR DA SILVA SANTOS" 
-            id="name" 
-            minlength="5" maxlength="60" 
-            pattern="^[A-Za-zÀ-ÿ\s]+$" 
-            title="Digite apenas letras" 
-            required>
-            <div id="name-feedback" class="feedback"></div>
- 
-            <label for="age">Idade:</label>
-            <input type="date" 
-            placeholder="Ex: 05/02/1994" 
-            id="age"
-            min="2000-01-01"
-            max="2010-12-31" 
-            required>
-
-            <label for="matricula">Matrícula:</label>
-            <div class="input-matricula">
-                <input type="text" 
-                value="0000" 
-                id="four-zero" 
-                disabled>
-                <input type="text" 
-                placeholder="Ex: 123456" 
-                id="matricula" pattern="[0-9]{6}" 
-                title="Digite apenas números (ex: 123456)" 
-                maxlength="6" 
-                required>
+                <div class="options-sidebar">
+                    <div class="option-sidebar" id="users-dashboard">
+                        <img src="./imgs/svg/users-icon.svg" alt="Gerenciar Usuários" id="users-icon">
+                        <p class="txt-sidebar">Gerenciar Usuários</p>
+                    </div>
+                    <div class="option-sidebar" id="settings">
+                        <img src="./imgs/svg/settings-icon.svg" alt="Configurações" id="settings-icon">
+                        <p class="txt-sidebar">Configurações</p>
+                    </div>
+                </div>
             </div>
-            <div id="matricula-feedback" class="feedback"></div>
+            <div class="user-information">
+                <hr class="divisor-line">
+                <div class="user-log">
+                    <div class="img-infor-user">
+                        <img src="./imgs/svg/user-logado-icon.svg" alt="Imagem de perfil do usuário">
+                        <div class="ps">
+                            <p class="txt-sidebar">Davi Calasans</p>
+                            <p class="txt-sidebar">Administrador</p>
+                        </div>
+                    </div>
+                    <img src="./imgs/svg/logout-icon.svg" alt="Sair">
+                </div>
 
-            <label for="serie">Série:</label>
-            <select name="serie" id="series" required>
-                <option value="" disabled selected>Selecione uma série</option>
-                <option value="1º Série EM">1º Série EM</option>
-                <option value="2º Série EM">2º Série EM</option>
-                <option value="3º Série EM">3º Série EM</option>
-            </select>
-            <div id="select-feedback" class="feedback"></div>
+            </div>
 
-            <label for="">Gênero:</label>
-            <img src="" alt="">
-            <label for="male">
-            <input type="radio" 
-            name="gender" 
-            value="Masculino" 
-            id="male" 
-            required>Masculino</label>
-
-            <label for="female">    
-            <input type="radio" 
-            name="gender" 
-            value="Feminino" 
-            id="female">Feminino</label>
-            <input id="btn-enviar" type="submit" disabled>
-
-        </form>
-    </div>
-
-    <div class="btns">
-        <input type="submit" value="Criar aluno" onclick="showForm()">
-    </div>
+        </nav>
+    </section>
     
-    <div class="container-card-user">
+    <main>
+        <div class="container-main">
+            <div class="total-search">
+                <div class="container-qtd-users">
+                    <p id="qtd-users">Quantidade de alunos cadastrados: 0</p>
+                </div>
+                
+                <div class="container-search">
+                    <div class="input-icon-search">
+                        <input type="text" id="search">
+                        <img src="./imgs/svg/search-icon.svg" alt=" " id="icon-search">
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-card-user">
+                    <button type="submit" value="Criar aluno" onclick="showForm()" id="btn-criar-aluno">
+                        <img src="./imgs/svg/add-user-icon.svg" alt="">
+                    </button>
+            </div>
+        </div>
+    </main>
+    
+    
+    <div div class="overlay" id="overlay-form">
+        <div class="layout-form">
+            <form action="" class="form" autocomplete="off">
+                <h3>CADASTRAR</h3>
+                <div class="label-input">
+                    <label for="name">Nome completo:</label>
+                    <input 
+                    type="text" 
+                    placeholder="Ex: NEYMAR DA SILVA SANTOS" 
+                    id="name" 
+                    minlength="5" maxlength="60" 
+                    pattern="^[A-Za-zÀ-ÿ\s]+$" 
+                    title="Digite apenas letras" 
+                    >
+                    <div id="name-feedback" class="feedback"></div>
+                </div>
+
+                <div class="label-input">
+                <label for="age">Idade:</label>
+                <input type="date" 
+                placeholder="Ex: 05/02/1994" 
+                id="age"
+                min="2000-01-01"
+                max="2010-12-31" 
+                >
+                </div>
+
+                <div class="label-input">
+                <label for="matricula">Matrícula:</label>
+                <div class="input-matricula">
+                    <input type="text" 
+                    value="0000" 
+                    id="four-zero" 
+                    disabled>
+                    <input type="text" 
+                    placeholder="Ex: 123456" 
+                    id="matricula" pattern="[0-9]{6}" 
+                    title="Digite apenas números (ex: 123456)" 
+                    maxlength="6" 
+                    >
+                </div>
+                <div id="matricula-feedback" class="feedback"></div>
+                </div>
+
+                <div class="label-input">
+                <label for="serie">Série:</label>
+                <select name="serie" id="series">
+                    <option value="" disabled selected>Selecione uma série</option>
+                    <option value="1º Série EM">1º Série EM</option>
+                    <option value="2º Série EM">2º Série EM</option>
+                    <option value="3º Série EM">3º Série EM</option>
+                </select>
+                <div id="select-feedback" class="feedback"></div>
+                </div>
+
+                <div class="label-input">
+                <div class="gender-radio">
+                    <label for="">Gênero:</label>
+                    <img src="" alt="">
+
+                    <div>
+                        <div id="male">
+                            <input type="radio" name="gender" value="Masculino" id="male" >Masculino</label>
+                            <label for="male">
+                        </div>
+
+                        <div id="female">
+                            <input type="radio" name="gender" value="Feminino" id="female">Feminino</label>
+                            <label for="female">    
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="btns-form">
+                    <button id="btn-cancelar-cadastro"><img src="./imgs/svg/btn-cancel-small.svg" alt=""></button>
+                    <button id="btn-enviar" disabled><img src="./imgs/svg/btn-save-small.svg" alt=""></button>
+                </div>
+            </form>
+        </div>
     </div>
-    <script type="module" src="/js/main.js"></script>
-    <script type="module" src="/js/validation.js"></script>
+    <div class="overlay" id="overlay-delete">
+        <div class="modal-confirm-delete">
+            <p>Você tem certeza que deseja deletar o aluno:</p>
+            <p id="nome-aluno">Fulano da Silva de Sá Carvalho</p>
+    
+            <div id="btns-modal-confirm-delete">
+                <button id="btn-cancelar">Cancelar</button>
+                <button id="btn-long-delete"><img src="./imgs/svg/btn-long-delete.svg" alt=""></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-toast">
+        
+    </div>
+
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/validation.js"></script>
+    <script type="module" src="./js/animations.js"></script>
 </body>
 </html>
