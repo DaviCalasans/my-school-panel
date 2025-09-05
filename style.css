@@ -390,6 +390,7 @@ body.sidebar-fechada {
 .container-card-user{
     width: 900px;
     padding-left: 10px;
+    /* background-color: red; */
 }
 
 .card-user, #btn-criar-aluno{
@@ -397,6 +398,16 @@ body.sidebar-fechada {
     height: 230px;
     border: 0.5px solid var(--color-gray-border-card);
     margin: 5px 20px;
+}
+
+.nd-encontrado{
+    width: 400px;
+    height: 230px;
+    margin: 5px 20px;
+}
+
+.nd-encontrado p{
+    font-weight: var(--font-weight-semibold);
 }
 
 #btn-criar-aluno{
