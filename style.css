@@ -58,7 +58,9 @@ body{
 }
 
 /* MODAIS */
-
+button {
+    cursor: pointer;
+}
 #overlay-delete, #overlay-form{
     opacity: 0;
     pointer-events: none;
@@ -380,9 +382,15 @@ body.sidebar-fechada {
     border: 0.5px solid var(--color-gray-border-card);
 }
 
+#search{
+    /* background-color: blue; */
+    padding-left: 10px;
+}
+
 .container-card-user{
     width: 900px;
     padding-left: 10px;
+    /* background-color: red; */
 }
 
 .card-user, #btn-criar-aluno{
@@ -390,6 +398,16 @@ body.sidebar-fechada {
     height: 230px;
     border: 0.5px solid var(--color-gray-border-card);
     margin: 5px 20px;
+}
+
+.nd-encontrado{
+    width: 400px;
+    height: 230px;
+    margin: 5px 20px;
+}
+
+.nd-encontrado p{
+    font-weight: var(--font-weight-semibold);
 }
 
 #btn-criar-aluno{
@@ -457,6 +475,7 @@ body.sidebar-fechada {
 
 #close-sidebar{
     align-self: flex-end;
+    cursor: pointer;
 }
 
 .container-card-user{
