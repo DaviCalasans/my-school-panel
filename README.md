@@ -1,4 +1,4 @@
-# 📄 Show User Layout - HTML & CSS & JS
+# 📄 My School Panel - HTML & CSS & JS
 
 Este projeto consiste em uma interface web desenvolvida com HTML, CSS e JavaScript puro, com o objetivo de exibir uma lista de usuários em cartões visuais e permitir o cadastro de novos usuários de forma dinâmica, sem recarregar a página.
 
