@@ -32,13 +32,11 @@ function hasMatricula(matricula){
     for(let num = 0; num < usuarios.length; num++){
         let matriculaRegistrada = usuarios[num].registrationValue;
         if(matricula === matriculaRegistrada){
-            console.log(`A matrícula registrada ${matricula} já existe: ${matriculaRegistrada}`);
             return true;
         }
         
     }
 
-    console.log(`A matrícula registrada ${matricula} não existe`);
     return false;
 }
 
@@ -119,7 +117,7 @@ document.querySelector('#name').addEventListener('paste', function(e){
 
     if (textoColado.length > 60) {
         textoColado = textoColado.substring(0, 60);
-        feedback.style.color = 'blue'; // Linha 51: azul
+        feedback.style.color = 'blue';
         return feedback.textContent = 'O texto colado foi reduzido para 60 caracteres.';
     }
     e.target.value = textoColado;
@@ -144,7 +142,7 @@ document.querySelector('#matricula').addEventListener('blur', function(e){
     
     if(e.target.value.length < 6){
         input.style.border = "2px solid red";
-        feedback.textContent = 'O matrícula deve possuir 6 números';
+        feedback.textContent = 'A matrícula deve possuir 6 números';
         verificaFeedback();
         return;
     }else{
@@ -158,7 +156,7 @@ document.querySelector('#matricula').addEventListener('blur', function(e){
 
     if(matriculaExiste){
         input.style.border = "2px solid red";
-        feedback.textContent = 'O matrícula já cadastrada';
+        feedback.textContent = 'Matrícula já cadastrada';
     }else{
         input.style.border = '';
         feedback.textContent = '';

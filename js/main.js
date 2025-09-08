@@ -9,8 +9,6 @@ function myEscope(){
     const form = document.querySelector('.form')
     const overlayDelete = document.querySelector('#overlay-delete');
     const overlayForm = document.querySelector('#overlay-form');
-    console.log(overlayForm)
-    // console.log(users);
     renderUsertoScreen(users);
     let qtdUsers = document.querySelector('#qtd-users');
     qtdUsersTotal(qtdUsers);
@@ -35,6 +33,7 @@ function myEscope(){
         form.reset();
 
     }
+
     //RECEBE O QUE FOI DIGITADO NO INPUT DE PESQUISA
     inputSearch.addEventListener('input', function(e){
         let nomeDigitado = e.target.value;
@@ -53,19 +52,16 @@ function myEscope(){
         );
 
         if(nomesEncontrados.length < 1){
-            console.log("Não foi encontrado nenhum resultado");
             esconderCards();
             return;
         }
 
         if(nomesEncontrados.length > 0 && nomesEncontrados.length < 2){
-            console.log(`Foi encontrado 1 resultado: ${nomesEncontrados}`);
             mostrarCards(nomesEncontrados);
             return;
         }
 
         if(nomesEncontrados.length > 1){
-            console.log(`Foram encontrados ${nomesEncontrados.length} resultados`);
             mostrarCards(nomesEncontrados);
             return;
         }
@@ -205,11 +201,11 @@ function myEscope(){
         }
     };
 
+    //Cria os toasts de feedback (Uusário criado e deletado)
     function addToast(mensagem, status){
         const containerToast = document.querySelector('.container-toast');
         const toast = document.createElement('div');
         toast.className = `toast ${status}`;
-        console.log(status)
 
         containerToast.appendChild(toast);
         
@@ -228,15 +224,15 @@ function myEscope(){
             toast.appendChild(progress);
         }
 
-        // animação de entrada
+        // Animação de entrada do toast
         setTimeout(() => {
           toast.classList.add("show");
         }, 100);
     
-        // remover depois de 3s
+        // Remoção do toast após 3 segundos
         setTimeout(() => {
           toast.classList.remove("show");
-          setTimeout(() => toast.remove(), 300); // esperar animação sair
+          setTimeout(() => toast.remove(), 300); // Esperar animação sair
         }, 5000);
     }
 

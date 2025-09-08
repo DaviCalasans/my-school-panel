@@ -9,7 +9,7 @@ const imgInfoUser = document.querySelector('.img-infor-user');
 const OptSidebar = document.querySelectorAll('.option-sidebar');
 const body = document.body;
 
-
+//Adiciona classes para estilização da sidebar fechada
 btnCloseSidebar.addEventListener('click', (e) => {
     if(!conteinerSidebar.classList.contains('container-sidebar-fechada')){
         conteinerSidebar.classList.add('container-sidebar-fechada');
@@ -23,7 +23,7 @@ btnCloseSidebar.addEventListener('click', (e) => {
         addOptionsSidebar();
         removeText();
         changeLogo();
-    }else{
+    }else{ //Remove as classes de estilização da sidebar fechada
         conteinerSidebar.classList.remove('container-sidebar-fechada');
         logo.classList.remove('logo-fechada');
         logoOptions.classList.remove('logo-options-fechada');
@@ -59,12 +59,4 @@ const removeOptionsSidebar = () => {
         opt.classList.remove('option-sidebar-fechada');
     })
 }
-// const changeLogo = () => {
-    //  }
-    //     logo.src = './imgs/svg/logo-icon.svg';
-    //     logoOptions.style.alignItems = 'center';
-    //     logoCloseSidebar.style.alignItems = 'center';
-    //     btnCloseSidebar.style.alignSelf = 'center';
-    //     logo.style.width = '60px';
-    //     logo.style.backgroundColor = 'red';
 
