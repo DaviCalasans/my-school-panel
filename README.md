@@ -6,16 +6,11 @@ Este projeto consiste em uma interface web desenvolvida com HTML, CSS e JavaScri
 
 ## 🚀 Funcionalidades
 
-- ✅ Exibição de usuários em um layout organizado e responsivo
+- ✅ Exibição de usuários em um layout organizado
 - ✅ Cadastro de novos usuários via formulário
+- ✅ Deletar usuários
 - ✅ Atualização dinâmica da interface com JavaScript
 - ✅ Estilização moderna com CSS puro
-
----
-
-## 📸 Prévia do Projeto
-
-> *(Aqui você pode adicionar uma imagem ou GIF da interface após rodar o projeto)*
 
 ---
 
